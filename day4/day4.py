@@ -54,7 +54,7 @@ def calculate_guard_schedules(entries, actions):
 		elif first_word=="falls":
 			guard_start_sleep = time_val
 		elif first_word=="wakes":
-			# guards never start their shifts if the time starts 23:xx, so this messy subtraction logic is fine
+			# guards never start falling asleep if the time starts 23:xx, so this subtraction logic is fine
 			time_asleep = time_val-guard_start_sleep
 			guard_sleep_time[refers_to_guard] += time_asleep
 			start_sleep_mins = int(str(guard_start_sleep)[-2:])

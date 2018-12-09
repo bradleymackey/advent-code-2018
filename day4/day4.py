@@ -49,8 +49,7 @@ def calculate_guard_schedules(entries, actions):
 		time_val = time[1]
 		first_word = actions[index][0]
 		if first_word=="Guard":
-			guard_num = int(actions[index][1][1:])
-			refers_to_guard = guard_num
+			refers_to_guard = int(actions[index][1][1:])
 		elif first_word=="falls":
 			guard_start_sleep = time_val
 		elif first_word=="wakes":
@@ -65,13 +64,16 @@ def calculate_guard_schedules(entries, actions):
 			exit()
 	return (guard_schedule,guard_sleep_time)
 
-# challenge 1
-from collections import defaultdict
+
 with open('input.txt', 'r') as file:
+
 
 	# calculate guard schedules using the inputs
 	entries, actions = parse_data_from_file(file)
 	guard_schedule, guard_sleep_time = calculate_guard_schedules(entries, actions)
+
+
+	# ----- CHALLENGE 1 ------
 
 	print(" ---> strategy 1:")
 
@@ -94,13 +96,7 @@ with open('input.txt', 'r') as file:
 	print("challenge 1 answer =",most_sleep_guard,"*",best_time,"=",answer)
 
 
-# challenge 2
-with open('input.txt', 'r') as file:
-
-	# calculate guard schedules using the inputs
-	entries, actions = parse_data_from_file(file)
-	# (we only really care about guard schedule this time)
-	guard_schedule, _ = calculate_guard_schedules(entries, actions)
+	# ----- CHALLENGE 2 -----
 
 	print(" ---> strategy 2:")
 

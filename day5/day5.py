@@ -2,7 +2,6 @@
 # bradleymackey
 
 
-
 # both challenges
 
 def compact_polymer_removing_char(package):
@@ -17,6 +16,7 @@ def compact_polymer_removing_char(package):
 	stack = ['-']
 	for c in string:
 		j = stack[-1]
+		# if we are removing this character, totally ignore it
 		if c.lower() == char:
 			continue
 		elif c != j and j.lower() == c.lower():
@@ -43,7 +43,7 @@ with open('input.txt', 'r') as file:
 	# we use the same function for challenge 1 and challenge 2
 	# pass an empty char, because we do not want to initially remove any char
 	answer = compact_polymer_removing_char((string,''))
-	print("challenge 1 answer:",answer)
+	print("challenge 1:",answer)
 
 	# ----- challenge 2 -----
 
@@ -62,13 +62,7 @@ with open('input.txt', 'r') as file:
 	pool.close() 
 	pool.join()
 
-	# zip each char back with its result
-	result_data = zip(ascii_lowercase,results)
-		
-	best_char = None
-	best_len = None
-	for char,length in result_data:
-		if best_len==None or length<best_len:
-			best_len = length
-			best_char = char
-	print("challenge 2 answer:",best_len,"(from char '"+best_char+"')")
+	# result is the minimum
+	answer = min(results)
+	answer_char = ascii_lowercase[results.index(answer)]
+	print("challenge 2:",answer,"(from char '"+answer_char+"')")
